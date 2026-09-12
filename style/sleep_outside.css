@@ -1,0 +1,154 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Open Sans', Arial, sans-serif;
+  color: #333;
+  background-color: #f9f9f9;
+  line-height: 1.6;
+}
+
+/* Header & Logo */
+header.divider {
+  background-color: #0d2c40;
+  color: #ffffff;
+  padding: 1rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.logo img {
+  width: 40px;
+  height: auto;
+}
+
+.logo a {
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.logo .highlight {
+  color: #d97706;
+}
+
+/* Hero Section */
+.hero {
+  text-align: center;
+  padding: 3rem 1rem;
+  background-color: #e5e7eb;
+}
+
+.hero h2 {
+  font-size: 2rem;
+  color: #1f2937;
+  margin-bottom: 0.5rem;
+}
+
+/* Newsletter Subscription Form */
+.newsletter {
+  background-color: #ffffff;
+  max-width: 600px;
+  margin: 2rem auto;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.newsletter h3 {
+  color: #0d2c40;
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.newsletter p {
+  color: #6b7280;
+  font-size: 0.95rem;
+  margin-bottom: 1.5rem;
+}
+
+#newsletter-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  align-items: center;
+}
+
+#newsletter-form label {
+  font-weight: 600;
+  color: #374151;
+  width: 100%;
+  text-align: left;
+}
+
+#newsletter-form input[type="email"] {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  font-size: 1rem;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+#newsletter-form input[type="email"]:focus {
+  outline: none;
+  border-color: #d97706;
+  box-shadow: 0 0 0 3px rgba(217, 119, 6, 0.2);
+}
+
+#subscribe-btn {
+  background-color: #d97706;
+  color: #ffffff;
+  border: none;
+  padding: 0.75rem 2rem;
+  font-size: 1rem;
+  font-weight: bold;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  width: 100%;
+}
+
+#subscribe-btn:hover {
+  background-color: #b45309;
+}
+
+footer {
+  background-color: #0d2c40;
+  color: #9ca3af;
+  text-align: center;
+  padding: 1.5rem 1rem;
+  margin-top: 3rem;
+  font-size: 0.875rem;
+}
+
+@media (min-width: 640px) {
+  #newsletter-form {
+    flex-direction: row;
+    align-items: stretch;
+  }
+
+  #newsletter-form label {
+    display: none;
+  }
+
+  #newsletter-form input[type="email"] {
+    flex: 1;
+  }
+
+  #subscribe-btn {
+    width: auto;
+  }
+}
