@@ -46,14 +46,25 @@ header.divider {
 /* Hero Section */
 .hero {
   text-align: center;
-  padding: 3rem 1rem;
-  background-color: #e5e7eb;
+  padding: 5rem 1rem;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../images/tent.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  color: #ffffff;
 }
 
 .hero h2 {
-  font-size: 2rem;
-  color: #1f2937;
+  font-size: 2.2rem;
+  color: #ffffff;
   margin-bottom: 0.5rem;
+  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.8);
+}
+
+.hero p {
+  font-size: 1.1rem;
+  color: #f3f4f6;
+  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.8);
 }
 
 /* Newsletter Subscription Form */
