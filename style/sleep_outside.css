@@ -39,7 +39,7 @@ header.divider {
   font-weight: bold;
 }
 
-.logo .highlight {
+.highlight {
   color: #d97706;
 }
 
@@ -151,4 +151,83 @@ footer {
   #subscribe-btn {
     width: auto;
   }
+}
+
+/* Search & Product Grid Styles */
+.search-section, .products-section {
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+  text-align: center;
+}
+
+.search-section h3, .products-section h3 {
+  color: #0d2c40;
+  margin-bottom: 1rem;
+}
+
+.search-box {
+  width: 100%;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+#search-input {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  font-size: 1rem;
+  border: 2px solid #d1d5db;
+  border-radius: 6px;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+#search-input:focus {
+  outline: none;
+  border-color: #d97706;
+  box-shadow: 0 0 0 3px rgba(217, 119, 6, 0.2);
+}
+
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+.product-card {
+  background-color: #ffffff;
+  padding: 1.25rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
+  border: 1px solid #e5e7eb;
+  text-align: left;
+  transition: transform 0.2s ease;
+}
+
+.product-card:hover {
+  transform: translateY(-3px);
+}
+
+.product-card h4 {
+  color: #0d2c40;
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+}
+
+.product-card .category {
+  color: #6b7280;
+  font-size: 0.85rem;
+  margin-bottom: 0.5rem;
+}
+
+.product-card .price {
+  color: #d97706;
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+
+.no-results {
+  color: #dc2626;
+  font-weight: 600;
+  margin-top: 1.5rem;
 }

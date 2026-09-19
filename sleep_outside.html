@@ -10,17 +10,55 @@
   <header class="divider">
     <div class="logo">
       <img src="images/icon10.webp" alt="Sleep Outside Logo">
-      <a href="index.html">Sleep<span class="highlight">Outside</span></a>
+      <a href="index.html">Sleep <span class="highlight">Outside 🏕️</span></a>
     </div>
   </header>
 
   <main class="divider">
     <section class="hero">
-      <h2>Welcome to Sleep Outside</h2>
+      <h2>Welcome to Sleep <span class="highlight">Outside 🏕️</span></h2>
       <p>Your destination for top-quality camping gear.</p>
     </section>
+    
+    <!--Week_02 task-->
+    <!-- Search Bar Feature -->
+    <section class="search-section">
+      <h3>Find Your Gear</h3>
+      <div class="search-box">
+        <input type="text" id="search-input" placeholder="Search for tents, sleeping bags, backpacks...">
+      </div>
+    </section>
 
-    <!--Newsletter Subscription form -->
+    <!-- Product Grid for Search Demonstration -->
+    <section class="products-section">
+      <h3>Featured Products</h3>
+      <div class="product-grid" id="product-grid">
+        <div class="product-card" data-name="cedar ridge rimrock 2-person tent">
+          <h4>Cedar Ridge Rimrock 2-Person Tent 🏕️</h4>
+          <p class="category">Category: Tents</p>
+          <p class="price">$69.99</p>
+        </div>
+        <div class="product-card" data-name="marmot trestles 15 sleeping bag">
+          <h4>Marmot Trestles 15 Sleeping Bag ⛺</h4>
+          <p class="category">Category: Sleeping Bags</p>
+          <p class="price">$109.99</p>
+        </div>
+        <div class="product-card" data-name="osprey atmosphere 65 backpack">
+          <h4>Osprey Atmos AG 65 Backpack 🎒</h4>
+          <p class="category">Category: Backpacks</p>
+          <p class="price">$270.00</p>
+        </div>
+        <div class="product-card" data-name="black diamond spot 350 headlamp">
+          <h4>Black Diamond Spot 350 Headlamp 🔦</h4>
+          <p class="category">Category: Lighting</p>
+          <p class="price">$39.95</p>
+        </div>
+      </div>
+      <p id="no-results" class="no-results" style="display: none;">No products found matching your search.</p>
+    </section>
+
+    <!--Week_01 task-->
+    <!-- Newsletter Subscription Form -->
     <section class="newsletter">
       <h3>Subscribe to our Newsletter</h3>
       <p>Get exclusive deals and outdoor tips delivered straight to your inbox.</p>
