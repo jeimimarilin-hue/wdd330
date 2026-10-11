@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Art Gallery</title>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <script src="js/main.js" type="module" defer></script>
+</head>
+<body>
+    <header class="hero">
+        <h1>Digital Art Gallery</h1>
+        <p>Explore modular digital masterpieces and timeless art</p>
+        <div class="controls">
+            <input type="text" id="search-input" placeholder="Search artwork or artist...">
+            <select id="filter-select">
+                <option value="all">All Categories</option>
+                <option value="Paintings">Paintings</option>
+                <option value="Digital">Digital Art</option>
+                <option value="Photography">Photography</option>
+            </select>
+            <button id="favorites-btn">View Favorites ❤️ (<span id="fav-count">0</span>)</button>
+        </div>
+    </header>
+
+    <main>
+        <div id="gallery-grid" class="gallery-grid">
+            <!-- Dynamic Artwork Cards -->
+        </div>
+    </main>
+
+    <!-- Modal Section -->
+    <div id="art-modal" class="modal hidden">
+        <div class="modal-content fade-in">
+            <button id="close-modal" class="close-btn">&times;</button>
+            <div class="modal-body">
+                <img id="modal-img" src="" alt="Artwork Image">
+                <div class="modal-details">
+                    <h2 id="modal-title"></h2>
+                    <p id="modal-artist" class="artist-name"></p>
+                    <p id="modal-description"></p>
+                    <button id="fav-toggle-btn" class="fav-btn">Add to Favorites ❤️</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Digital Art Gallery. Built with JavaScript Modules.</p>
+    </footer>
+</body>
+</html>
