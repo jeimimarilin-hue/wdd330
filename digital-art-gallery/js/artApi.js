@@ -1,124 +1,127 @@
 export async function fetchArtworks(query = '', limit = 12) {
-  const sampleArtworks = [
+  const artworksCollection = [
     {
-      id: 1,
+      id: 101,
       title: "The Starry Night",
       artist: "Vincent van Gogh",
       date: "1889",
       medium: "Oil on canvas",
       department: "Post-Impressionism",
-      imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ea/Van_Gogh_-_Starry_Night_-_Google_Art_Project.jpg/800px-Van_Gogh_-_Starry_Night_-_Google_Art_Project.jpg"
+      imageUrl: "https://images.unsplash.com/photo-1541701494587-cb58502866ab?auto=format&fit=crop&w=800&q=80"
     },
     {
-      id: 2,
-      title: "Water Lilies",
-      artist: "Claude Monet",
-      date: "1906",
+      id: 102,
+      title: "Color and Form Study",
+      artist: "Wassily Kandinsky",
+      date: "1923",
+      medium: "Oil on canvas",
+      department: "Modern Art",
+      imageUrl: "https://images.unsplash.com/photo-1579783902614-a3fb3927b675?auto=format&fit=crop&w=800&q=80"
+    },
+    {
+      id: 103,
+      title: "Classical Abstract Composition",
+      artist: "International Gallery",
+      date: "20th Century",
+      medium: "Mixed media",
+      department: "Contemporary Art",
+      imageUrl: "https://images.unsplash.com/photo-1578301978693-85fa9c0320b9?auto=format&fit=crop&w=800&q=80"
+    },
+    {
+      id: 104,
+      title: "Renaissance Portrait",
+      artist: "Renaissance Master",
+      date: "1550",
+      medium: "Oil on panel",
+      department: "European Painting",
+      imageUrl: "https://images.unsplash.com/photo-1582561234710-449e7943d674?auto=format&fit=crop&w=800&q=80"
+    },
+    {
+      id: 105,
+      title: "Impression of Light",
+      artist: "Claude Monet Style",
+      date: "1905",
       medium: "Oil on canvas",
       department: "Impressionism",
-      imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/Claude_Monet_-_Water_Lilies_-_1906%2C_Ryerson_and_Burnham_Libraries.jpg/800px-Claude_Monet_-_Water_Lilies_-_1906%2C_Ryerson_and_Burnham_Libraries.jpg"
+      imageUrl: "https://images.unsplash.com/photo-1579783900882-c0d3dad7b119?auto=format&fit=crop&w=800&q=80"
     },
     {
-      id: 3,
-      title: "The Scream",
-      artist: "Edvard Munch",
-      date: "1893",
-      medium: "Oil, tempera and pastel on cardboard",
-      department: "Expressionism",
-      imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/Edvard_Munch%2C_1893%2C_The_Scream%2C_oil%2C_tempera_and_pastel_on_cardboard%2C_91_x_73_cm%2C_Nasjonalmuseet.jpg/640px-Edvard_Munch%2C_1893%2C_The_Scream%2C_oil%2C_tempera_and_pastel_on_cardboard%2C_91_x_73_cm%2C_Nasjonalmuseet.jpg"
+      id: 106,
+      title: "Sculpture and Chiaroscuro",
+      artist: "Classical Renaissance",
+      date: "1600",
+      medium: "Marble and Oil",
+      department: "Fine Arts",
+      imageUrl: "https://images.unsplash.com/photo-1561214115-f2f134cc4912?auto=format&fit=crop&w=800&q=80"
     },
     {
-      id: 4,
-      title: "The Great Wave off Kanagawa",
-      artist: "Katsushika Hokusai",
-      date: "1831",
-      medium: "Woodblock print",
-      department: "Japanese Art",
-      imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f4/The_Great_Wave_off_Kanagawa.jpg/800px-The_Great_Wave_off_Kanagawa.jpg"
-    },
-    {
-      id: 5,
-      title: "The Birth of Venus",
-      artist: "Sandro Botticelli",
-      date: "1485",
-      medium: "Tempera on canvas",
-      department: "Early Renaissance",
-      imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0b/Sandro_Botticelli_-_La_nascita_de_Venere_-_Google_Art_Project_-2.jpg/800px-Sandro_Botticelli_-_La_nascita_de_Venere_-_Google_Art_Project_-2.jpg"
-    },
-    {
-      id: 6,
-      title: "Mona Lisa",
-      artist: "Leonardo da Vinci",
-      date: "1503",
-      medium: "Oil on poplar panel",
-      department: "High Renaissance",
-      imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ec/Mona_Lisa,_by_Leonardo_da_Vinci,_from_C2RMF_retouched.jpg/640px-Mona_Lisa,_by_Leonardo_da_Vinci,_from_C2RMF_retouched.jpg"
-    },
-    {
-      id: 7,
-      title: "Girl with a Pearl Earring",
-      artist: "Johannes Vermeer",
-      date: "1665",
+      id: 107,
+      title: "Still Life with Flowers",
+      artist: "Flemish School",
+      date: "1650",
       medium: "Oil on canvas",
-      department: "Dutch Golden Age",
-      imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3b/Johannes_Vermeer_-_De_meisje_met_de_parel.jpg/800px-Johannes_Vermeer_-_De_meisje_met_de_parel.jpg"
+      department: "Golden Age",
+      imageUrl: "https://images.unsplash.com/photo-1577083552431-6e5fd01aa342?auto=format&fit=crop&w=800&q=80"
     },
     {
-      id: 8,
-      title: "The Night Watch",
-      artist: "Rembrandt van Rijn",
-      date: "1642",
+      id: 108,
+      title: "Harmony in Warm Tones",
+      artist: "Artistic Avant-Garde",
+      date: "1935",
       medium: "Oil on canvas",
-      department: "Dutch Golden Age",
-      imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5f/The_Night_Watch_-_Bicker.jpg/800px-The_Night_Watch_-_Bicker.jpg"
+      department: "Modern Art",
+      imageUrl: "https://images.unsplash.com/photo-1579783902614-a3fb3927b675?auto=format&fit=crop&w=800&q=80"
     },
     {
-      id: 9,
-      title: "The Persistence of Memory",
-      artist: "Salvador Dalí",
-      date: "1931",
-      medium: "Oil on canvas",
-      department: "Surrealism",
-      imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b4/The_Persistence_of_Memory_%281931%29.jpg/800px-The_Persistence_of_Memory_%281931%29.jpg"
-    },
-    {
-      id: 10,
-      title: "Wanderer above the Sea of Fog",
-      artist: "Caspar David Friedrich",
-      date: "1818",
+      id: 109,
+      title: "Romantic Landscape",
+      artist: "19th Century Master",
+      date: "1840",
       medium: "Oil on canvas",
       department: "Romanticism",
-      imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9f/Caspar_David_Friedrich_-_Wanderer_above_the_sea_of_fog.jpg/800px-Caspar_David_Friedrich_-_Wanderer_above_the_sea_of_fog.jpg"
+      imageUrl: "https://images.unsplash.com/photo-1536924940846-227afb31e2a5?auto=format&fit=crop&w=800&q=80"
     },
     {
-      id: 11,
-      title: "The Swing",
-      artist: "Jean-Honoré Fragonard",
-      date: "1767",
-      medium: "Oil on canvas",
-      department: "Rococo",
-      imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/Jean-Honor%C3%A9_Fragonard_-_The_Swing_%28WGA08159%29.jpg/800px-Jean-Honor%C3%A9_Fragonard_-_The_Swing_%28WGA08159%29.jpg"
+      id: 110,
+      title: "Chromatic Expression",
+      artist: "Contemporary Artist",
+      date: "1970",
+      medium: "Acrylic on canvas",
+      department: "Contemporary Art",
+      imageUrl: "https://images.unsplash.com/photo-1549887534-1541e9326642?auto=format&fit=crop&w=800&q=80"
     },
     {
-      id: 12,
-      title: "American Gothic",
-      artist: "Grant Wood",
-      date: "1930",
-      medium: "Oil on beaverboard",
-      department: "Modern Art",
-      imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cc/Grant_Wood_-_American_Gothic_-_Google_Art_Project.jpg/800px-Grant_Wood_-_American_Gothic_-_Google_Art_Project.jpg"
+      id: 111,
+      title: "Face and Shadow Study",
+      artist: "Academy of Fine Arts",
+      date: "1880",
+      medium: "Charcoal and Oil",
+      department: "Academic",
+      imageUrl: "https://images.unsplash.com/photo-1579783901586-d88db75b4fe4?auto=format&fit=crop&w=800&q=80"
+    },
+    {
+      id: 112,
+      title: "Geometry of Art",
+      artist: "Modern Movement",
+      date: "1950",
+      medium: "Mixed media",
+      department: "Abstract Art",
+      imageUrl: "https://images.unsplash.com/photo-1579783900882-c0d3dad7b119?auto=format&fit=crop&w=800&q=80"
     }
   ];
 
-  if (!query) {
-    return sampleArtworks.slice(0, limit);
+  await new Promise(resolve => setTimeout(resolve, 50));
+
+  if (!query || query.trim() === '') {
+    return artworksCollection.slice(0, limit);
   }
 
-  const filtered = sampleArtworks.filter(art => 
-    art.title.toLowerCase().includes(query.toLowerCase()) ||
-    art.artist.toLowerCase().includes(query.toLowerCase()) ||
-    art.department.toLowerCase().includes(query.toLowerCase())
+  const searchTerm = query.toLowerCase();
+  const filtered = artworksCollection.filter(art => 
+    art.title.toLowerCase().includes(searchTerm) ||
+    art.artist.toLowerCase().includes(searchTerm) ||
+    art.department.toLowerCase().includes(searchTerm)
   );
 
-  return filtered.length > 0 ? filtered : sampleArtworks.slice(0, limit);
+  return filtered.length > 0 ? filtered : artworksCollection.slice(0, limit);
 }
