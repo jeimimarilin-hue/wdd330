@@ -2,7 +2,7 @@ const BASE_URL = 'https://api.artic.edu/api/v1/artworks';
 
 export async function fetchArtworks(query = '', limit = 12) {
   try {
-    let url = `${BASE_URL}?limit=${limit}&fields=id,title,artist_display,date_display,medium_display,department_title,image_id`;
+    let url = `${BASE_URL}?limit=50&fields=id,title,artist_display,date_display,medium_display,department_title,image_id`;
     
     if (query) {
       url = `${BASE_URL}/search?q=${encodeURIComponent(query)}&limit=${limit}&fields=id,title,artist_display,date_display,medium_display,department_title,image_id`;
@@ -18,6 +18,7 @@ export async function fetchArtworks(query = '', limit = 12) {
 
     const artworks = items
       .filter(item => item.image_id)
+      .slice(0, limit)
       .map(item => ({
         id: item.id,
         title: item.title || 'Untitled',
