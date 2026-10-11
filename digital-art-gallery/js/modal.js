@@ -1,4 +1,6 @@
 export function setupModal(modalElement, closeBtn) {
+  if (!closeBtn || !modalElement) return;
+
   closeBtn.addEventListener('click', () => {
     modalElement.classList.add('hidden');
   });
@@ -11,6 +13,8 @@ export function setupModal(modalElement, closeBtn) {
 }
 
 export function openModal(artwork, modalElement) {
+  if (!modalElement) return;
+
   document.getElementById('modal-img').src = artwork.imageUrl;
   document.getElementById('modal-title').textContent = artwork.title;
   document.getElementById('modal-artist').textContent = `Artist: ${artwork.artist}`;

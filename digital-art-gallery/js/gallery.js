@@ -1,6 +1,6 @@
 export function renderGallery(artworks, container, onCardClick) {
   container.innerHTML = '';
-  if (artworks.length === 0) {
+  if (!artworks || artworks.length === 0) {
     container.innerHTML = `<p class="no-results">No artworks found. Try searching for something else!</p>`;
     return;
   }

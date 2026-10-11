@@ -6,7 +6,6 @@ export async function fetchArtworks(query = 'monet', limit = 12) {
     if (!response.ok) throw new Error('Network response failed');
     
     const data = await response.json();
-    
     const iiifBaseUrl = data.config?.iiif_url || 'https://www.artic.edu/iiif/2';
 
     const artworks = data.data.map(item => {

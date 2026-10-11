@@ -1,7 +1,7 @@
 import { fetchArtworks } from './artApi.js';
 import { renderGallery } from './gallery.js';
 import { setupModal, openModal } from './modal.js';
-import { getFavorites, toggleFavorite, getSavedTheme, saveTheme } from './storage.js';
+import { getFavorites, getSavedTheme, saveTheme } from './storage.js';
 
 document.addEventListener('DOMContentLoaded', async () => {
   const galleryGrid = document.getElementById('gallery-grid');
@@ -29,9 +29,13 @@ document.addEventListener('DOMContentLoaded', async () => {
   const initialArtworks = await fetchArtworks('masterpiece', 12);
   if (initialArtworks.length > 0) {
     const hero = initialArtworks[0];
-    document.getElementById('hero-img').src = hero.imageUrl;
-    document.getElementById('hero-title').textContent = hero.title;
-    document.getElementById('hero-artist').textContent = hero.artist;
+    const heroImg = document.getElementById('hero-img');
+    const heroTitle = document.getElementById('hero-title');
+    const heroArtist = document.getElementById('hero-artist');
+    
+    if (heroImg) heroImg.src = hero.imageUrl;
+    if (heroTitle) heroTitle.textContent = hero.title;
+    if (heroArtist) heroArtist.textContent = hero.artist;
   }
 
   renderGallery(initialArtworks, galleryGrid, (art) => openModal(art, modalElement));
@@ -44,17 +48,22 @@ document.addEventListener('DOMContentLoaded', async () => {
     renderGallery(results, galleryGrid, (art) => openModal(art, modalElement));
   };
 
-  searchBtn.addEventListener('click', handleSearch);
+  if (searchBtn) searchBtn.addEventListener('click', handleSearch);
+  if (searchInput) {
+    searchInput.addEventListener('keypress', (e) => {
+      if (e.key === 'Enter') handleSearch();
+    });
+  }
 
   // Quick Tag Buttons
   document.querySelectorAll('.tag-btn').forEach(btn => {
     btn.addEventListener('click', async (e) => {
       const query = e.target.getAttribute('data-query');
-      searchInput.value = query;
+      if (searchInput) searchInput.value = query;
       await handleSearch();
     });
   });
 
   // Favorites Count
-  favCount.textContent = getFavorites().length;
+  if (favCount) favCount.textContent = getFavorites().length;
 });
