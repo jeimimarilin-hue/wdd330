@@ -1,32 +1,40 @@
-const BASE_URL = 'https://api.artic.edu/api/v1/artworks';
+const SEARCH_URL = 'https://collectionapi.metmuseum.org/public/collection/v1/search?q=';
+const OBJECT_URL = 'https://collectionapi.metmuseum.org/public/collection/v1/objects/';
 
-export async function fetchArtworks(query = '', limit = 12) {
+export async function fetchArtworks(query = 'painting', limit = 12) {
   try {
-    let url = `${BASE_URL}?limit=50&fields=id,title,artist_display,date_display,medium_display,department_title,image_id`;
+    const searchQuery = query ? query : 'painting';
+    const searchResponse = await fetch(`${SEARCH_URL}${encodeURIComponent(searchQuery)}`);
+    if (!searchResponse.ok) throw new Error('Search failed');
     
-    if (query) {
-      url = `${BASE_URL}/search?q=${encodeURIComponent(query)}&limit=${limit}&fields=id,title,artist_display,date_display,medium_display,department_title,image_id`;
-    }
-    
-    const response = await fetch(url);
-    if (!response.ok) throw new Error('Network response failed');
-    
-    const data = await response.json();
-    const iiifBaseUrl = data.config?.iiif_url || 'https://www.artic.edu/iiif/2';
-    const items = data.data || [];
+    const searchData = await searchResponse.json();
+    const objectIDs = searchData.objectIDs || [];
 
-    const artworks = items
-      .filter(item => item && item.image_id)
-      .slice(0, limit)
-      .map(item => ({
-        id: item.id,
-        title: item.title || 'Untitled',
-        artist: item.artist_display || 'Unknown Artist',
-        date: item.date_display || 'N/A',
-        medium: item.medium_display || 'N/A',
-        department: item.department_title || 'General Collection',
-        imageUrl: `${iiifBaseUrl}/${item.image_id}/full/843,/0/default.jpg`
-      }));
+    const validIDs = objectIDs.slice(0, limit * 2);
+    const artworkPromises = validIDs.map(async (id) => {
+      try {
+        const res = await fetch(`${OBJECT_URL}${id}`);
+        if (!res.ok) return null;
+        const item = await res.json();
+        
+        if (!item.primaryImage) return null;
+
+        return {
+          id: item.objectID,
+          title: item.title || 'Untitled Masterpiece',
+          artist: item.artistDisplayName || 'Unknown Artist',
+          date: item.objectDate || 'N/A',
+          medium: item.medium || 'N/A',
+          department: item.department || 'General Collection',
+          imageUrl: item.primaryImage
+        };
+      } catch {
+        return null;
+      }
+    });
+
+    const results = await Promise.all(artworkPromises);
+    const artworks = results.filter(art => art !== null).slice(0, limit);
 
     return artworks;
   } catch (error) {
