@@ -1,42 +1,22 @@
-import { toggleFavorite, isFavorite } from './storage.js';
+export function setupModal(modalElement, closeBtn) {
+  closeBtn.addEventListener('click', () => {
+    modalElement.classList.add('hidden');
+  });
 
-export function setupModal(updateFavCountCallback) {
-    const modal = document.getElementById('art-modal');
-    const closeBtn = document.getElementById('close-modal');
-    const favBtn = document.getElementById('fav-toggle-btn');
-    let currentArtId = null;
-
-    closeBtn.addEventListener('click', () => {
-        modal.classList.add('hidden');
-    });
-
-    favBtn.addEventListener('click', () => {
-        if (currentArtId) {
-            toggleFavorite(currentArtId);
-            updateModalFavButton(currentArtId);
-            if (updateFavCountCallback) updateFavCountCallback();
-        }
-    });
-
-    return function openModal(art) {
-        currentArtId = art.id;
-        document.getElementById('modal-img').src = art.image;
-        document.getElementById('modal-title').textContent = art.title;
-        document.getElementById('modal-artist').textContent = `By ${art.artist}`;
-        document.getElementById('modal-description').textContent = art.description;
-        
-        updateModalFavButton(art.id);
-        modal.classList.remove('hidden');
-    };
+  modalElement.addEventListener('click', (e) => {
+    if (e.target === modalElement) {
+      modalElement.classList.add('hidden');
+    }
+  });
 }
 
-function updateModalFavButton(artId) {
-    const favBtn = document.getElementById('fav-toggle-btn');
-    if (isFavorite(artId)) {
-        favBtn.textContent = 'Remove from Favorites 💔';
-        favBtn.style.backgroundColor = '#ef4444';
-    } else {
-        favBtn.textContent = 'Add to Favorites ❤️';
-        favBtn.style.backgroundColor = '#38bdf8';
-    }
+export function openModal(artwork, modalElement) {
+  document.getElementById('modal-img').src = artwork.imageUrl;
+  document.getElementById('modal-title').textContent = artwork.title;
+  document.getElementById('modal-artist').textContent = `Artist: ${artwork.artist}`;
+  document.getElementById('modal-date').textContent = `Date: ${artwork.date}`;
+  document.getElementById('modal-medium').textContent = `Medium: ${artwork.medium}`;
+  document.getElementById('modal-department').textContent = `Department: ${artwork.department}`;
+
+  modalElement.classList.remove('hidden');
 }

@@ -1,53 +1,98 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Digital Art Gallery</title>
-    <link rel="stylesheet" href="css/main.css">
-    <link rel="stylesheet" href="css/animations.css">
-    <script src="js/main.js" type="module" defer></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Digital Art Gallery & Collection Showcase</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,800;1,400&family=Plus+Jakarta+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/main.css" />
+  <link rel="stylesheet" href="css/animations.css" />
 </head>
 <body>
-    <header class="hero">
-        <h1>Digital Art Gallery</h1>
-        <p>Explore modular digital masterpieces and timeless art</p>
-        <div class="controls">
-            <input type="text" id="search-input" placeholder="Search artwork or artist...">
-            <select id="filter-select">
-                <option value="all">All Categories</option>
-                <option value="Paintings">Paintings</option>
-                <option value="Digital">Digital Art</option>
-                <option value="Photography">Photography</option>
-            </select>
-            <button id="favorites-btn">View Favorites ❤️ (<span id="fav-count">0</span>)</button>
-        </div>
-    </header>
-
-    <main>
-        <div id="gallery-grid" class="gallery-grid">
-            <!-- Dynamic Artwork Cards -->
-        </div>
-    </main>
-
-    <!-- Modal Section -->
-    <div id="art-modal" class="modal hidden">
-        <div class="modal-content fade-in">
-            <button id="close-modal" class="close-btn">&times;</button>
-            <div class="modal-body">
-                <img id="modal-img" src="" alt="Artwork Image">
-                <div class="modal-details">
-                    <h2 id="modal-title"></h2>
-                    <p id="modal-artist" class="artist-name"></p>
-                    <p id="modal-description"></p>
-                    <button id="fav-toggle-btn" class="fav-btn">Add to Favorites ❤️</button>
-                </div>
-            </div>
-        </div>
+  <header class="navbar">
+    <div class="logo">
+      <span class="logo-icon">🖼️</span>
+      <h1>ArtGallery</h1>
     </div>
+    <div class="search-bar-container">
+      <input type="text" id="search-input" placeholder="Search artworks, artists, eras..." />
+      <button id="search-btn">🔍 Search</button>
+    </div>
+    <div class="header-actions">
+      <button id="theme-toggle" class="btn-secondary">🌙 Dark Mode</button>
+      <button id="view-favorites-btn" class="btn-primary">❤️ My Collections (<span id="fav-count">0</span>)</button>
+    </div>
+  </header>
 
-    <footer>
-        <p>&copy; 2026 Digital Art Gallery. Built with JavaScript Modules.</p>
-    </footer>
+  <main class="container">
+    <!-- Hero Banner: Masterpiece of the Day -->
+    <section id="hero-banner" class="hero-banner">
+      <div class="hero-image-wrapper">
+        <img id="hero-img" src="" alt="Masterpiece of the Day" />
+      </div>
+      <div class="hero-details">
+        <span class="badge">Masterpiece of the Day</span>
+        <h2 id="hero-title">Loading artwork...</h2>
+        <p id="hero-artist" class="artist-name"></p>
+
+      </div>
+    </section>
+
+    <!-- Controls & Filters -->
+    <section class="gallery-controls">
+      <div class="filter-group">
+        <label for="department-filter">Department:</label>
+        <select id="department-filter">
+          <option value="">All Departments</option>
+          <option value="PC-13">Paintings</option>
+          <option value="PC-14">Sculptures</option>
+          <option value="PC-8">Prints and Drawings</option>
+          <option value="PC-10">Modern Art</option>
+        </select>
+      </div>
+      <div class="quick-tags">
+        <button class="tag-btn" data-query="Monet">Monet</button>
+        <button class="tag-btn" data-query="Van Gogh">Van Gogh</button>
+        <button class="tag-btn" data-query="Impressionism">Impressionism</button>
+        <button class="tag-btn" data-query="Japanese">Japanese Prints</button>
+      </div>
+    </section>
+
+    <!-- Main Artwork Grid -->
+    <section class="gallery-section">
+      <h3 id="section-title">Explore Museum Collection</h3>
+      <div id="gallery-grid" class="gallery-grid">
+        <!-- Cards inserted dynamically via JavaScript -->
+      </div>
+    </section>
+  </main>
+
+  <!-- Modal Artwork Inspector -->
+  <div id="art-modal" class="modal-overlay hidden">
+    <div class="modal-card">
+      <button id="close-modal" class="close-btn">&times;</button>
+      <div class="modal-body">
+        <div class="modal-image-container">
+          <img id="modal-img" src="" alt="" />
+        </div>
+        <div class="modal-info">
+          <h2 id="modal-title"></h2>
+          <p id="modal-artist" class="modal-artist"></p>
+          <p id="modal-date" class="modal-meta"></p>
+          <p id="modal-medium" class="modal-meta"></p>
+          <p id="modal-department" class="modal-meta"></p>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <p>&copy; 2026 Digital Art Gallery Showcase | Built with Vanilla JS & Art Institute of Chicago API</p>
+  </footer>
+
+  <script type="module" src="js/main.js"></script>
 </body>
 </html>

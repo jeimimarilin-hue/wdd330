@@ -1,42 +1,28 @@
-export async function fetchArtworks() {
-    try {
-        // Sample data simulating an external API response
-        return [
-            {
-                id: "1",
-                title: "Starry Reflections",
-                artist: "Vincent van Gogh",
-                category: "Paintings",
-                image: "https://images.unsplash.com/photo-1579783902614-a3fb3927b675?w=600",
-                description: "A stunning exploration of color and nighttime rhythm."
-            },
-            {
-                id: "2",
-                title: "Neon Cyberpunk City",
-                artist: "Elena Rostova",
-                category: "Digital",
-                image: "https://images.unsplash.com/photo-1541701494587-cb58502866ab?w=600",
-                description: "Futuristic metropolitan landscape render."
-            },
-            {
-                id: "3",
-                title: "Serene Nature",
-                artist: "Marcus Vance",
-                category: "Photography",
-                image: "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=600",
-                description: "Capturing tranquil moments in natural surroundings."
-            },
-            {
-                id: "4",
-                title: "Abstract Symphony",
-                artist: "Clara Smith",
-                category: "Digital",
-                image: "https://images.unsplash.com/photo-1579783900882-c0d3dad7b119?w=600",
-                description: "Fluid motion created digitally using modern design suites."
-            }
-        ];
-    } catch (error) {
-        console.error("Error fetching art data:", error);
-        return [];
-    }
+const BASE_URL = 'https://api.artic.edu/api/v1/artworks';
+
+export async function fetchArtworks(query = 'monet', limit = 12) {
+  try {
+    const response = await fetch(`${BASE_URL}/search?q=${query}&limit=${limit}&fields=id,title,artist_display,date_display,medium_display,department_title,image_id`);
+    if (!response.ok) throw new Error('Network response failed');
+    const data = await response.json();
+    const config = data.config;
+    
+    // Construct full image URLs
+    const artworks = data.data.map(item => ({
+      id: item.id,
+      title: item.title || 'Untitled',
+      artist: item.artist_display || 'Unknown Artist',
+      date: item.date_display || 'N/A',
+      medium: item.medium_display || 'N/A',
+      department: item.department_title || 'General Collection',
+      imageUrl: item.image_id 
+        ? `${config.iiif_url}/${item.image_id}/full/843,/0/default.jpg` 
+        : 'https://via.placeholder.com/400x300?text=No+Image+Available'
+    }));
+
+    return artworks;
+  } catch (error) {
+    console.error('API Fetch Error:', error);
+    return [];
+  }
 }
