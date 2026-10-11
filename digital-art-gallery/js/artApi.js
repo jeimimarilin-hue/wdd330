@@ -2,10 +2,10 @@ const BASE_URL = 'https://api.artic.edu/api/v1/artworks';
 
 export async function fetchArtworks(query = '', limit = 12) {
   try {
-    let url = `${BASE_URL}?limit=50&fields=id,title,artist_display,date_display,medium_display,department_title,image_id&include=config`;
+    let url = `${BASE_URL}?limit=50&fields=id,title,artist_display,date_display,medium_display,department_title,image_id`;
     
     if (query) {
-      url = `${BASE_URL}/search?q=${encodeURIComponent(query)}&limit=${limit}&fields=id,title,artist_display,date_display,medium_display,department_title,image_id&include=config`;
+      url = `${BASE_URL}/search?q=${encodeURIComponent(query)}&limit=${limit}&fields=id,title,artist_display,date_display,medium_display,department_title,image_id`;
     }
     
     const response = await fetch(url);

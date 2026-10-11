@@ -1,6 +1,4 @@
 export function setupModal(modalElement, closeBtn) {
-  if (!closeBtn || !modalElement) return;
-
   closeBtn.addEventListener('click', () => {
     modalElement.classList.add('hidden');
   });
@@ -12,15 +10,18 @@ export function setupModal(modalElement, closeBtn) {
   });
 }
 
-export function openModal(artwork, modalElement) {
-  if (!modalElement) return;
+export function openModal(art, modalElement) {
+  const modalBody = document.getElementById('modal-body');
+  if (!modalBody || !modalElement) return;
 
-  document.getElementById('modal-img').src = artwork.imageUrl;
-  document.getElementById('modal-title').textContent = artwork.title;
-  document.getElementById('modal-artist').textContent = `Artist: ${artwork.artist}`;
-  document.getElementById('modal-date').textContent = `Date: ${artwork.date}`;
-  document.getElementById('modal-medium').textContent = `Medium: ${artwork.medium}`;
-  document.getElementById('modal-department').textContent = `Department: ${artwork.department}`;
+  modalBody.innerHTML = `
+    <img src="${art.imageUrl}" alt="${art.title}" style="width:100%; max-height:300px; object-fit:contain; margin-bottom:1rem; border-radius:4px;">
+    <h2>${art.title}</h2>
+    <p><strong>Artist:</strong> ${art.artist}</p>
+    <p><strong>Date:</strong> ${art.date}</p>
+    <p><strong>Medium:</strong> ${art.medium}</p>
+    <p><strong>Department:</strong> ${art.department}</p>
+  `;
 
   modalElement.classList.remove('hidden');
 }
