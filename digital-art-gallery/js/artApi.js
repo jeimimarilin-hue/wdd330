@@ -17,7 +17,7 @@ export async function fetchArtworks(query = '', limit = 12) {
     const items = data.data || [];
 
     const artworks = items
-      .filter(item => item.image_id)
+      .filter(item => item && item.image_id)
       .slice(0, limit)
       .map(item => ({
         id: item.id,

@@ -12,21 +12,23 @@ document.addEventListener('DOMContentLoaded', async () => {
   const closeModalBtn = document.getElementById('close-modal');
   const favCount = document.getElementById('fav-count');
 
-  // Load initial theme
   const currentTheme = getSavedTheme();
   if (currentTheme === 'dark') document.body.classList.add('dark-mode');
 
-  themeToggle.addEventListener('click', () => {
-    document.body.classList.toggle('dark-mode');
-    const newTheme = document.body.classList.contains('dark-mode') ? 'dark' : 'light';
-    saveTheme(newTheme);
-  });
+  if (themeToggle) {
+    themeToggle.addEventListener('click', () => {
+      document.body.classList.toggle('dark-mode');
+      const newTheme = document.body.classList.contains('dark-mode') ? 'dark' : 'light';
+      saveTheme(newTheme);
+    });
+  }
 
-  // Setup Modal
-  setupModal(modalElement, closeModalBtn);
+  if (modalElement && closeModalBtn) {
+    setupModal(modalElement, closeModalBtn);
+  }
 
-  // Initial Fetch & Hero Banner Setup
-  const initialArtworks = await fetchArtworks('masterpiece', 12);
+  const initialArtworks = await fetchArtworks('', 12);
+  
   if (initialArtworks.length > 0) {
     const hero = initialArtworks[0];
     const heroImg = document.getElementById('hero-img');
@@ -36,14 +38,15 @@ document.addEventListener('DOMContentLoaded', async () => {
     if (heroImg) heroImg.src = hero.imageUrl;
     if (heroTitle) heroTitle.textContent = hero.title;
     if (heroArtist) heroArtist.textContent = hero.artist;
+
+    renderGallery(initialArtworks.slice(1), galleryGrid, (art) => openModal(art, modalElement));
+  } else {
+    if (galleryGrid) galleryGrid.innerHTML = '<p>No artworks found.</p>';
   }
 
-  renderGallery(initialArtworks, galleryGrid, (art) => openModal(art, modalElement));
-
-  // Search Logic
   const handleSearch = async () => {
-    const query = searchInput.value.trim() || 'art';
-    galleryGrid.innerHTML = '<p>Loading artworks...</p>';
+    const query = searchInput ? searchInput.value.trim() : '';
+    if (galleryGrid) galleryGrid.innerHTML = '<p>Loading artworks...</p>';
     const results = await fetchArtworks(query, 12);
     renderGallery(results, galleryGrid, (art) => openModal(art, modalElement));
   };
@@ -55,7 +58,6 @@ document.addEventListener('DOMContentLoaded', async () => {
     });
   }
 
-  // Quick Tag Buttons
   document.querySelectorAll('.tag-btn').forEach(btn => {
     btn.addEventListener('click', async (e) => {
       const query = e.target.getAttribute('data-query');
@@ -64,6 +66,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     });
   });
 
-  // Favorites Count
-  if (favCount) favCount.textContent = getFavorites().length;
+  if (favCount) {
+    favCount.textContent = getFavorites().length;
+  }
 });
