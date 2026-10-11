@@ -7,7 +7,7 @@ export async function fetchArtworks(query = '', limit = 12) {
       date: "1889",
       medium: "Oil on canvas",
       department: "Post-Impressionism",
-      imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ea/Van_Gogh_-_Starry_Night_-_Google_Art_Project.jpg/800px-Van_Gogh_-_Starry_Night_-_Google_Art_Project.jpg"
+      imageUrl: "https://images.unsplash.com/photo-1541701494587-cb58502866ab?auto=format&fit=crop&w=800&q=80"
     },
     {
       id: 102,
@@ -16,7 +16,7 @@ export async function fetchArtworks(query = '', limit = 12) {
       date: "1906",
       medium: "Oil on canvas",
       department: "Impressionism",
-      imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/Claude_Monet_-_Water_Lilies_-_1906%2C_Ryerson_and_Burnham_Libraries.jpg/800px-Claude_Monet_-_Water_Lilies_-_1906%2C_Ryerson_and_Burnham_Libraries.jpg"
+      imageUrl: "https://images.unsplash.com/photo-1579783900882-c0d3dad7b119?auto=format&fit=crop&w=800&q=80"
     },
     {
       id: 103,
@@ -25,16 +25,16 @@ export async function fetchArtworks(query = '', limit = 12) {
       date: "1893",
       medium: "Oil, tempera and pastel",
       department: "Expressionism",
-      imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/Edvard_Munch%2C_1893%2C_The_Scream%2C_oil%2C_tempera_and_pastel_on_cardboard%2C_91_x_73_cm%2C_Nasjonalmuseet.jpg/640px-Edvard_Munch%2C_1893%2C_The_Scream%2C_oil%2C_tempera_and_pastel_on_cardboard%2C_91_x_73_cm%2C_Nasjonalmuseet.jpg"
+      imageUrl: "https://images.unsplash.com/photo-1579783902614-a3fb3927b675?auto=format&fit=crop&w=800&q=80"
     },
     {
       id: 104,
-      title: "The Great Wave off Kanagawa",
+      title: "The Great Wave",
       artist: "Katsushika Hokusai",
       date: "1831",
       medium: "Woodblock print",
       department: "Japanese Art",
-      imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f4/The_Great_Wave_off_Kanagawa.jpg/800px-The_Great_Wave_off_Kanagawa.jpg"
+      imageUrl: "https://images.unsplash.com/photo-1578301978693-85fa9c0320b9?auto=format&fit=crop&w=800&q=80"
     },
     {
       id: 105,
@@ -43,7 +43,7 @@ export async function fetchArtworks(query = '', limit = 12) {
       date: "1485",
       medium: "Tempera on canvas",
       department: "Early Renaissance",
-      imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0b/Sandro_Botticelli_-_La_nascita_de_Venere_-_Google_Art_Project_-2.jpg/800px-Sandro_Botticelli_-_La_nascita_de_Venere_-_Google_Art_Project_-2.jpg"
+      imageUrl: "https://images.unsplash.com/photo-1582561234710-449e7943d674?auto=format&fit=crop&w=800&q=80"
     },
     {
       id: 106,
@@ -52,7 +52,7 @@ export async function fetchArtworks(query = '', limit = 12) {
       date: "1503",
       medium: "Oil on poplar panel",
       department: "High Renaissance",
-      imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ec/Mona_Lisa,_by_Leonardo_da_Vinci,_from_C2RMF_retouched.jpg/640px-Mona_Lisa,_by_Leonardo_da_Vinci,_from_C2RMF_retouched.jpg"
+      imageUrl: "https://images.unsplash.com/photo-1561214115-f2f134cc4912?auto=format&fit=crop&w=800&q=80"
     },
     {
       id: 107,
@@ -61,7 +61,7 @@ export async function fetchArtworks(query = '', limit = 12) {
       date: "1665",
       medium: "Oil on canvas",
       department: "Dutch Golden Age",
-      imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3b/Johannes_Vermeer_-_De_meisje_met_de_parel.jpg/800px-Johannes_Vermeer_-_De_meisje_met_de_parel.jpg"
+      imageUrl: "https://images.unsplash.com/photo-1577083552431-6e5fd01aa342?auto=format&fit=crop&w=800&q=80"
     },
     {
       id: 108,
@@ -70,7 +70,7 @@ export async function fetchArtworks(query = '', limit = 12) {
       date: "1642",
       medium: "Oil on canvas",
       department: "Dutch Golden Age",
-      imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5f/The_Night_Watch_-_Bicker.jpg/800px-The_Night_Watch_-_Bicker.jpg"
+      imageUrl: "https://images.unsplash.com/photo-1536924940846-227afb31e2a5?auto=format&fit=crop&w=800&q=80"
     },
     {
       id: 109,
@@ -79,7 +79,7 @@ export async function fetchArtworks(query = '', limit = 12) {
       date: "1931",
       medium: "Oil on canvas",
       department: "Surrealism",
-      imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b4/The_Persistence_of_Memory_%281931%29.jpg/800px-The_Persistence_of_Memory_%281931%29.jpg"
+      imageUrl: "https://images.unsplash.com/photo-1549887534-1541e9326642?auto=format&fit=crop&w=800&q=80"
     },
     {
       id: 110,
@@ -88,7 +88,7 @@ export async function fetchArtworks(query = '', limit = 12) {
       date: "1818",
       medium: "Oil on canvas",
       department: "Romanticism",
-      imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9f/Caspar_David_Friedrich_-_Wanderer_above_the_sea_of_fog.jpg/800px-Caspar_David_Friedrich_-_Wanderer_above_the_sea_of_fog.jpg"
+      imageUrl: "https://images.unsplash.com/photo-1579783901586-d88db75b4fe4?auto=format&fit=crop&w=800&q=80"
     },
     {
       id: 111,
@@ -97,7 +97,7 @@ export async function fetchArtworks(query = '', limit = 12) {
       date: "1767",
       medium: "Oil on canvas",
       department: "Rococo",
-      imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/Jean-Honor%C3%A9_Fragonard_-_The_Swing_%28WGA08159%29.jpg/800px-Jean-Honor%C3%A9_Fragonard_-_The_Swing_%28WGA08159%29.jpg"
+      imageUrl: "https://images.unsplash.com/photo-1579783900882-c0d3dad7b119?auto=format&fit=crop&w=800&q=80"
     },
     {
       id: 112,
@@ -106,7 +106,7 @@ export async function fetchArtworks(query = '', limit = 12) {
       date: "1930",
       medium: "Oil on beaverboard",
       department: "Modern Art",
-      imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cc/Grant_Wood_-_American_Gothic_-_Google_Art_Project.jpg/800px-Grant_Wood_-_American_Gothic_-_Google_Art_Project.jpg"
+      imageUrl: "https://images.unsplash.com/photo-1541701494587-cb58502866ab?auto=format&fit=crop&w=800&q=80"
     }
   ];
 
